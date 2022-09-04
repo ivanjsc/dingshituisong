@@ -255,7 +255,7 @@ def aqi():
 
 # 推送信息
 def send_message(to_user, access_token, city_name, weather, max_temperature, min_temperature, pipi, lizhi, pop, tips,
-                 wind, windsc, vis, uvindex, yusan, humidity, note_en, note_ch, health_tip, lucky_,  quality, zwxtips, wenhou, bobao):
+                 wind, windsc, vis, uvindex, yusan, humidity, note_en, note_ch, health_tip, lucky_,  quality, zwxtips, wenhou, bobao, empty):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
@@ -383,6 +383,10 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
                 "value": zwxtips,
                 "color": get_color()
             },
+            "empty": {
+                "value": empty,
+                "color": "#FFFFFF"
+            },
         }
     }
     for key, value in birthdays.items():
@@ -467,10 +471,11 @@ if __name__ == "__main__":
     # 自定义提示内容
     wenhou = str('亲爱的乖宝宝，早上好！记得按时吃早饭午饭晚饭，今天也要开心哦')
     bobao = str(f'下面由我来给宝贝播报今日天气状况') # 下面由我来给宝贝播报今日天气状况 想乖乖的每一天QAQ
+    empty = '.'
     # 公众号推送消息
     for user in users:
         send_message(user, accessToken, city, weather, max_temperature, min_temperature, pipi, lizhi, pop, tips, wind,
-                     windsc, vis, uvindex, yusan, humidity, note_en, note_ch, health_tip, lucky_, quality, zwxtips, wenhou, bobao)
+                     windsc, vis, uvindex, yusan, humidity, note_en, note_ch, health_tip, lucky_, quality, zwxtips, wenhou, bobao, empty)
     import time
     time_duration = 3.5
     time.sleep(time_duration)
