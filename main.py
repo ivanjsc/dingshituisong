@@ -203,7 +203,7 @@ def tip():
             res = conn.getresponse()
             data = res.read()
             data = json.loads(data)
-            pop = data["newslist"][0]["pop"]  # 降雨概率
+            pop = data["newslist"][0]["pcpn"]  # 降雨概率
             tips = data["newslist"][0]["tips"]  # 生活指数提示
             humidity = data["newslist"][0]["humidity"]  # 湿度
             wind = data["newslist"][0]["wind"]  # 风向
@@ -216,12 +216,17 @@ def tip():
 
 # 降雨概率大于60提示出门带伞
 def yusand():
-    a = int(pop)
-    if (a >= 60):
-        yusan1 = str('(带雨伞哦)')
-        return yusan1
+    a = float(pop)
+    if (a <= 0.1):
+        return '(无雨)'
+    elif(0.1 < a >=10):
+        return '(小雨)'
+    elif(10 < a >=25):
+        return '(中雨)'
+    elif(25 < a >=50):
+        return '(大雨)'
     else:
-        return
+        return '(暴雨)'
 
 # 紫外线强度提示
 def zwxtips():
