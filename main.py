@@ -217,13 +217,13 @@ def tip():
 # 降雨概率大于60提示出门带伞
 def yusand():
     a = float(pop)
-    if (a <= 0.1):
+    if a <= 0.1:
         return '(无雨)'
-    if(0.1 < a >=10):
+    elif a > 0.1 or a <=10:
         return '(小雨)'
-    if(10 < a >=25):
+    elif a > 11 or a <=25:
         return '(中雨)'
-    if(25 < a >=50):
+    elif a > 25 or a <=50:
         return '(大雨)'
     else:
         return '(暴雨)'
