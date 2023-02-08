@@ -219,11 +219,11 @@ def yusand():
     a = float(pop)
     if (a <= 0.1):
         return '(无雨)'
-    elif(0.1 < a >=10):
+    if(0.1 < a >=10):
         return '(小雨)'
-    elif(10 < a >=25):
+    if(10 < a >=25):
         return '(中雨)'
-    elif(25 < a >=50):
+    if(25 < a >=50):
         return '(大雨)'
     else:
         return '(暴雨)'
